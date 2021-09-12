@@ -14,6 +14,12 @@ x = 'frog'
 x = 'Computer'
 comp = x[:4].lower()
 cpe = x[::3].lower()
+
+a = [1, 3, 5, 7, 9]
+b = [2, 4, 6, 8, 9]
+
+set(a).intersection(set(b))
+
 # print(x[1:4]) # Starts at the 'o'. Start is inclusive and End is Non-inclusive
 # print(x[1:6:2]) # Retrieves every SECOND step or element
 # print(x[3:])
