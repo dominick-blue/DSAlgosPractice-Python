@@ -1,4 +1,4 @@
-items = [20, 53, 84, 19, 56, 23, 87, 41, 6, 8]
+items = [6, 20, 8, 19, 56, 23, 87, 41, 49, 53]
 
 def mergesort(dataset):
     if len(dataset) > 1:
@@ -6,38 +6,32 @@ def mergesort(dataset):
         leftarr = dataset[:mid]
         rightarr = dataset[mid:]
 
-        # Recursively break down the arrays
         mergesort(leftarr)
         mergesort(rightarr)
 
-        # Now perform the merging
+        left_index = 0
+        right_index = 0
+        merged_index = 0
 
-        i = 0 # index into the left array
-        j = 0 # index into the right array
-        k = 0 # index into the merged array
-
-        # while both arrays have content
-        while i < len(leftarr) and j < len(rightarr):
-            if leftarr[i] < rightarr[j]:
-                dataset[k] = leftarr[i]
-                i += 1
+        while left_index < len(leftarr) and right_index < len(rightarr):
+            if leftarr[left_index] < rightarr[right_index]:
+                dataset[merged_index] = leftarr[left_index]
+                left_index += 1
             else:
-                dataset[k] = rightarr[j]
-                j += 1
-            k += 1
+                dataset[merged_index] = rightarr[right_index]
+                right_index += 1
+            merged_index += 1
 
-        # if the left array still has values, add them
-        while i < len(leftarr):
-            dataset[k] = leftarr[i]
-            i += 1
-            k += 1
 
-        # if the right array still has values, add them
+        while left_index < len(leftarr):
+            dataset[merged_index] = leftarr[left_index]
+            left_index += 1
+            merged_index += 1
 
-        while j < len(rightarr):
-            dataset[k] = rightarr[j]
-            j += 1
-            k += 1
+        while right_index < len(rightarr):
+            dataset[merged_index] = rightarr[right_index]
+            right_index += 1
+            merged_index += 1
 
 print(items)
 mergesort(items)
